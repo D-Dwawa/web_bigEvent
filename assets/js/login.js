@@ -66,7 +66,7 @@ $(function() {
                 layer.msg('登录成功');
                 //token保存起来
                 localStorage.setItem("token", res.token);
-                location.href = '/index.html';
+                location.href = './index.html';
             }
         });
     });
