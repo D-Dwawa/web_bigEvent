@@ -2,6 +2,8 @@
 
 $.ajaxPrefilter(function(options) {
     options.url = 'http://ajax.frontend.itheima.net' + options.url;
+    // http://127.0.0.1:8003
+    // options.url = 'http://127.0.0.1:8003' + options.url;
     // 设置统一的请求头
     //判断路径
     if (options.url.indexOf('/my/') !== -1) {
