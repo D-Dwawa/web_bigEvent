@@ -141,7 +141,7 @@ $(function() {
     // 6. 监听编辑按钮的点击事件
     $('body').on('click', '#btn-edit', function() {
         //1.获取文章ID
-        location.href = '/article/article_edit.html?id=' + $(this).attr('data-id')
+        location.href = './article_edit.html?id=' + $(this).attr('data-id')
             // 6. 监听编辑按钮的点击事件
 
         // 2.发送ajax请求

@@ -51,7 +51,7 @@
                     <div class="layui-input-block cover-box">
                         <!-- 左侧裁剪区域 -->
                         <div class="cover-left">
-                            <img id="image" src="/assets/images/sample2.jpg" alt="" />
+                            <img id="image" src="./../assets/images/sample2.jpg" alt="" />
                         </div>
                         <!-- 右侧预览区域和选择封面区域 -->
                         <div class="cover-right">
@@ -74,22 +74,28 @@
         </div>
     </div>
     <script type="text/html" id="tpl-cate_id">
-        {{each data}}
-        <option value="{{$value.Id}}">{{$value.name}}</option>
-
-        {{/each}}
+        <select name="cate_id" lay-verify="required">
+            <option value="">请选择文章类别</option>
+            {{each data}}
+            <option value="{{$value.Id}}">{{$value.name}}</option>
+            {{/each}}
+          </select>
     </script>
-    <script src="../assets/lib/layui/layui.all.js"></script>
     <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/lib/layui/layui.all.js"></script>
+
+
     <script src="../assets/lib/template-web.js"></script>
     <script src="../assets/js/baseAPI.js"></script>
-    <script src="../assets/js/article_content.js"></script>
+
     <!-- 富文本 -->
     <script src="../assets/lib/tinymce/tinymce.min.js"></script>
     <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
     <!-- 裁剪封面 -->
-    <script src="/assets/lib/cropper/Cropper.js"></script>
-    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+    <script src="../assets/lib/cropper/Cropper.js"></script>
+    <script src="../assets/lib/cropper/jquery-cropper.js"></script>
+    <script src="../assets/js/article_content.js"></script>
+
 </body>
 
 </html>

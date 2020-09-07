@@ -7,7 +7,7 @@ $(function() {
         //定义加载文章分类的方法
 
     // 1. 初始化图片裁剪器
-    var $image = $('#image')
+    var $image = $('#image');
 
 
     // 2. 裁剪选项
@@ -70,17 +70,17 @@ $(function() {
         //2.获取表单提交数据 
         var form_data = new FormData($(this)[0]);
         //3.添加新的表单数据
-        form_data.append('state', art_state);
+        // form_data.append('state', art_state);
         //4将图片的裁剪区域，输出一个文件对象
-        $image
+        $('#image')
             .cropper('getCroppedCanvas', { // 创建一个 Canvas 画布
                 width: 400,
                 height: 280
-            })
-            .toBlob(function(blob) { // 将 Canvas 画布上的内容，转化为文件对象
+            }).toBlob(function(blob) { // 将 Canvas 画布上的内容，转化为文件对象
                 // 得到文件对象后，进行后续的操作
                 //5.存储文件form_data 文件中
                 form_data.append('cover_img', blob);
+                form_data.append('state', art_state);
                 //6.发起ajax请求
                 publishArticle(form_data);
             })
@@ -101,9 +101,33 @@ $(function() {
                     return layer.msg('发布文章失败');
                 }
                 layer.msg('发布文章成功！');
-                location.href = '/article/article_list.html';
+                location.href = './../article/article_list.html';
             }
         })
     }
 
+
+    // 选择封面
+    $('#btnChooseCoverImage').on('click', function(e) {
+        e.preventDefault()
+            // 模拟点击
+        $('#fileCover').click()
+    })
+
+    // 监听文件选择框的 change 事件
+    $('#fileCover').on('change', function(e) {
+        var files = e.target.files
+            // 用户没有选择任何图片封面
+        if (files.length === 0) {
+            return
+        }
+
+        // 将选择的图片转化为临时路径
+        var tempURL = URL.createObjectURL(files[0])
+            // 重置图片裁剪器
+        $image
+            .cropper('destroy')
+            .attr('src', tempURL)
+            .cropper(cropperOption)
+    })
 })

@@ -130,7 +130,7 @@ $(function() {
                         if (res.status !== 0) {
                             return layer.msg('编辑文章失败!')
                         }
-                        location.href = '/article/article_list.html'
+                        location.href = './../article/article_list.html'
                     }
                 })
             })
